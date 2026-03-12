@@ -1,8 +1,8 @@
 body{
+
 margin:0;
-font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background:#0f172a;
-color:white;
+font-family:'Inter',sans-serif;
+
 }
 
 /* HERO */
@@ -16,79 +16,78 @@ align-items:center;
 justify-content:center;
 
 background:linear-gradient(
-135deg,
-#0f172a,
-#1e293b,
-#020617
-);
+rgba(10,20,40,0.8),
+rgba(10,20,40,0.95)
+),
+url("banner.jpg");
+
+background-size:cover;
+background-position:center;
 
 }
 
-/* CONTENIDO */
+/* CUADRO */
 
-.hero-content{
+.hero-box{
+
+border:6px solid white;
+
+border-radius:30px;
+
+padding:80px 120px;
+
 text-align:center;
-max-width:800px;
-padding:40px;
+
+color:white;
+
+backdrop-filter:blur(4px);
+
 }
 
 /* TITULO */
 
 .hero h1{
-font-size:72px;
+
 margin:0;
+
+font-size:90px;
+
+font-weight:700;
+
 letter-spacing:-2px;
+
 }
 
 .atlas{
+
 font-weight:700;
+
 }
 
 .producciones{
+
+font-size:40px;
+
+margin-left:15px;
+
+font-weight:400;
+
+}
+
+/* TEXTO */
+
+.hero p{
+
+font-size:36px;
+
+margin-top:30px;
+
 font-weight:300;
-margin-left:10px;
-}
-
-/* SLOGAN */
-
-.tagline{
-font-size:28px;
-margin-top:20px;
-color:#cbd5f5;
-}
-
-.tagline strong{
-color:white;
-}
-
-/* BOTON */
-
-.cta{
-
-display:inline-block;
-
-margin-top:40px;
-
-padding:14px 32px;
-
-border-radius:40px;
-
-background:white;
-
-color:#0f172a;
-
-text-decoration:none;
-
-font-weight:600;
-
-transition:0.3s;
 
 }
 
-.cta:hover{
+.hero strong{
 
-transform:translateY(-3px);
-
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
+font-weight:700;
 
 }
