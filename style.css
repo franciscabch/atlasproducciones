@@ -1,0 +1,63 @@
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0b1320;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(
+rgba(10,20,40,0.85),
+rgba(10,20,40,0.95)
+),
+url("banner.jpg");
+
+background-size:cover;
+background-position:center;
+}
+
+/* CUADRO BLANCO */
+
+.hero-box{
+
+border:6px solid white;
+border-radius:30px;
+
+padding:60px 80px;
+
+text-align:center;
+
+backdrop-filter:blur(4px);
+}
+
+/* TITULO */
+
+.titulo{
+font-size:80px;
+font-weight:700;
+margin:0;
+}
+
+.titulo span{
+font-size:40px;
+margin-left:15px;
+font-weight:400;
+}
+
+/* SLOGAN */
+
+.slogan{
+font-size:36px;
+margin-top:30px;
+}
+
+.slogan strong{
+font-weight:800;
+}
