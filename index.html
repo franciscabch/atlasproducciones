@@ -1,36 +1,486 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Producciones</title>
+  <meta name="description" content="Atlas Producciones - Producción de eventos deportivos y corporativos." />
+  <style>
+    :root {
+      --bg: #031a2a;
+      --bg-soft: #082338;
+      --text: #f5f7fa;
+      --muted: #b7c3cf;
+      --accent: #d4af37;
+      --line: rgba(255, 255, 255, 0.12);
+      --card: rgba(255, 255, 255, 0.03);
+      --max-width: 1200px;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<title>Atlas Producciones</title>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<link rel="stylesheet" href="style.css">
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(3, 26, 42, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--text);
+    }
+
+    .cta-nav {
+      padding: 12px 18px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 999px;
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: calc(100vh - 78px);
+      display: flex;
+      align-items: center;
+      padding: 80px 0 40px;
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.14), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.22);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: #02131f;
+    }
+
+    .hero-card small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-card strong {
+      font-size: 1.15rem;
+    }
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-head {
+      margin-bottom: 42px;
+      max-width: 760px;
+    }
+
+    .section-head span {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .services-grid,
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card,
+    .gallery-item,
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card h3,
+    .gallery-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .service-card p,
+    .gallery-item p,
+    .contact-box p {
+      color: var(--muted);
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .gallery-placeholder {
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      border: 1px dashed rgba(255, 255, 255, 0.24);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .site-footer {
+      padding: 28px 0 38px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-layout,
+      .services-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14vw, 4.8rem);
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <img src="logo-atlas.png" alt="Logo Atlas Producciones" />
+        <span>Atlas Producciones</span>
+      </a>
 
-<section class="hero">
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a class="cta-nav" href="https://www.instagram.com/atlasproduccionescl" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="hero-box">
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Producción de eventos</div>
+          <h1>Tu evento comienza aquí.</h1>
+          <p>
+            En Atlas Producciones creamos experiencias visuales para eventos deportivos y corporativos,
+            con una propuesta moderna, clara y pensada para destacar cada momento.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Contáctanos</a>
+            <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
 
-<h1>
-<span class="atlas">Atlas</span>
-<span class="producciones">Producciones</span>
-</h1>
+        <div class="hero-card">
+          <img src="logo-atlas.png" alt="Atlas Producciones" />
+          <small>Marca</small>
+          <strong>Producción visual para eventos que merecen ser recordados.</strong>
+        </div>
+      </div>
+    </section>
 
-<p>
-Tu evento a un <strong>click</strong>
-</p>
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <span>Servicios</span>
+          <h2>Soluciones para eventos deportivos y corporativos.</h2>
+          <p>
+            Diseñamos una presencia visual limpia y profesional para marcas, equipos, organizaciones y empresas
+            que buscan comunicar con impacto.
+          </p>
+        </div>
 
-</div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-tag">Eventos deportivos</div>
+            <h3>Cobertura y producción para deporte</h3>
+            <p>
+              Producción visual enfocada en capturar la energía, identidad y ritmo de competencias,
+              encuentros y actividades deportivas.
+            </p>
+          </article>
 
-</section>
+          <article class="service-card">
+            <div class="service-tag">Eventos corporativos</div>
+            <h3>Producción para marcas y empresas</h3>
+            <p>
+              Apoyamos eventos corporativos con una propuesta visual cuidada, profesional y alineada con la imagen de cada cliente.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <span>Galería</span>
+          <h2>Muestra tu trabajo con una presentación limpia y potente.</h2>
+          <p>
+            Dejamos esta estructura lista para que después reemplaces cada bloque con imágenes reales de tus eventos.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Espacio para imagen 01<br />Evento deportivo</div>
+            <h3>Proyecto destacado</h3>
+            <p>Agrega aquí una foto potente de cobertura o producción en terreno.</p>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Espacio para imagen 02<br />Evento corporativo</div>
+            <h3>Evento corporativo</h3>
+            <p>Ideal para mostrar escenarios, branding, público o momentos clave.</p>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Espacio para imagen 03<br />Backstage o montaje</div>
+            <h3>Detrás de escena</h3>
+            <p>Un buen espacio para mostrar preparación, montaje o equipo trabajando.</p>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Espacio para imagen 04<br />Highlight visual</div>
+            <h3>Momento clave</h3>
+            <p>Usa este bloque para una imagen impactante que eleve la percepción de tu marca.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <span>Contacto</span>
+          <h2>Conversemos sobre tu próximo evento.</h2>
+          <p>
+            Si quieres cotizar o conocer más sobre Atlas Producciones, puedes escribirnos por Instagram o correo.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-box">
+            <h3>Instagram</h3>
+            <p>Conoce más del trabajo de Atlas Producciones y contáctanos directamente.</p>
+            <div class="contact-links">
+              <a class="btn btn-primary" href="https://www.instagram.com/atlasproduccionescl" target="_blank" rel="noopener noreferrer">Ir a Instagram</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Correo</h3>
+            <p>Escríbenos para consultas, cotizaciones y coordinación de eventos.</p>
+            <div class="contact-links">
+              <a class="btn btn-secondary" href="mailto:contacto@atlasproducciones.cl">contacto@atlasproducciones.cl</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © 2026 Atlas Producciones. Todos los derechos reservados.
+    </div>
+  </footer>
 </body>
 </html>
